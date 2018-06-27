@@ -64,7 +64,7 @@ public abstract class Event {
         this(name, date, start_hour, end_hour, "")
     }
 
-    public event(String name, String date, String startHour, String endHour, String description) {
+    public Event(String name, String date, String startHour, String endHour, String description) {
         setName(name);
         setDate(date);
         setStartHour(startHour);
