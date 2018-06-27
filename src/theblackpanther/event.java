@@ -47,20 +47,20 @@ public abstract class Event {
         this.description = description;
     }
 
-    public event() {
+    public Event() {
         this("", "", "", "", "")
     }
-    public event(String name) {
+    public Event(String name) {
         this(name, "", "", "", "")
     }
-    public event(String name, String date) {
+    public Event(String name, String date) {
         this(name, date, "", "", "")
     }
-    public event(String name, String date, String start_hour) {
+    public Event(String name, String date, String start_hour) {
         this(name, date, start_hour, "", "")
     }
 
-    public event(String name, String date, String start_hour, String end_hour) {
+    public Event(String name, String date, String start_hour, String end_hour) {
         this(name, date, start_hour, end_hour, "")
     }
 
