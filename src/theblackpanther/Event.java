@@ -48,23 +48,23 @@ public abstract class Event {
     }
 
     public Event() {
-        this("", "", "", "", "")
+        this("", "", "", "", "");
     }
     public Event(String name) {
-        this(name, "", "", "", "")
+        this(name, "", "", "", "");
     }
     public Event(String name, String date) {
-        this(name, date, "", "", "")
+        this(name, date, "", "", "");
     }
     public Event(String name, String date, String start_hour) {
-        this(name, date, start_hour, "", "")
+        this(name, date, start_hour, "", "");
     }
 
     public Event(String name, String date, String start_hour, String end_hour) {
-        this(name, date, start_hour, end_hour, "")
+        this(name, date, start_hour, end_hour, "");
     }
 
-    public event(String name, String date, String startHour, String endHour, String description) {
+    public Event(String name, String date, String startHour, String endHour, String description) {
         setName(name);
         setDate(date);
         setStartHour(startHour);
