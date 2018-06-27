@@ -1,6 +1,6 @@
 package theblackpanther;
 
-public abstract class event {
+public abstract class Event {
     private String name;
     private String date;
     private String startHour;
