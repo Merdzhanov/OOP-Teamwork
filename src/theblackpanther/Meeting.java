@@ -2,7 +2,7 @@ package theblackpanther;
 
 import java.util.ArrayList;
 
-public class Meeting extends Event {
+public class Meeting extends Event implements Editable {
     String place;
     ArrayList<String> participants;
 
@@ -19,5 +19,4 @@ public class Meeting extends Event {
     void addParticipant(String participant){
 
     }
-	<m>edit_event	-implaments- editable
 }
