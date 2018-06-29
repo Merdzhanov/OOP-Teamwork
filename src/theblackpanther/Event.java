@@ -7,6 +7,34 @@ public abstract class Event {
     private String endHour;
     private String description;
 
+    public Event(String name, String date, String startHour, String endHour, String description) {
+        setName(name);
+        setDate(date);
+        setStartHour(startHour);
+        setEndHour(endHour);
+        setDescription(description);
+    }
+
+    public Event() {
+        this("", "", "", "", "");
+    }
+    public Event(String name) {
+        this(name, "", "", "", "");
+    }
+    public Event(String name, String date) {
+        this(name, date, "", "", "");
+    }
+    public Event(String name, String date, String start_hour) {
+        this(name, date, start_hour, "", "");
+    }
+
+    public Event(String name, String date, String start_hour, String end_hour) {
+        this(name, date, start_hour, end_hour, "");
+    }
+
+    public abstract void  displayEvent();
+    public abstract void deleteEvent();
+
     public String getName() {
         return name;
     }
@@ -46,36 +74,6 @@ public abstract class Event {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Event() {
-        this("", "", "", "", "");
-    }
-    public Event(String name) {
-        this(name, "", "", "", "");
-    }
-    public Event(String name, String date) {
-        this(name, date, "", "", "");
-    }
-    public Event(String name, String date, String start_hour) {
-        this(name, date, start_hour, "", "");
-    }
-
-    public Event(String name, String date, String start_hour, String end_hour) {
-        this(name, date, start_hour, end_hour, "");
-    }
-
-    public Event(String name, String date, String startHour, String endHour, String description) {
-        setName(name);
-        setDate(date);
-        setStartHour(startHour);
-        setEndHour(endHour);
-        setDescription(description);
-    }
-
-    public abstract void  display_event();
-    public abstract void delete_event();
-
-
 
 }
 
