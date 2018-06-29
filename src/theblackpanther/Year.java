@@ -7,8 +7,8 @@ public class Year {
     private ArrayList<Month> months;
 
     public Year(YearNumber yearNumber) {
-        this.yearNumber = yearNumber;
-        this.months = new ArrayList<Month>();
+        setYearNumber(yearNumber);
+        setMonths(new ArrayList<Month>());
     }
 
     public void displayAllMonths(){
