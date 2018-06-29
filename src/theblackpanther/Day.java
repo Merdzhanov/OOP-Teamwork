@@ -1,23 +1,22 @@
 package theblackpanther;
 
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
     public class Day {
-        private DayOfWeek dayOfWeek;
+        private String dayOfWeek;
         private String date;
         private List<Event> eventListForDay;
 
         //Constructor
-        public Day(DayOfWeek dayOfWeek, String date) {
+        public Day(String dayOfWeek, String date) {
             setDayOfWeek(dayOfWeek);
             setDate(date);
             setEventListForDay();
         }
 
         //Getters
-        public DayOfWeek getDayOfWeek() {
+        public String getDayOfWeek() {
             return dayOfWeek;
         }
 
@@ -31,7 +30,7 @@ import java.util.List;
 
 
         //Setters
-        private void setDayOfWeek(DayOfWeek dayOfWeek) {
+        private void setDayOfWeek(String dayOfWeek) {
             this.dayOfWeek = dayOfWeek;
         }
 
