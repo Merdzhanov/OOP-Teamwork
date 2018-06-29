@@ -9,10 +9,10 @@ public class Month {
     private int numberOfDays;
 
     public Month(MonthName name, int numberOfDays) {
-        this.name = name;
-        this.days = new ArrayList<Day>();
-        this.eventDays = new ArrayList<Day>();
-        this.numberOfDays = numberOfDays;
+        setName(name);
+        setDays(new ArrayList<Day>());
+        setEventDays(new ArrayList<Day>());
+        setNumberOfDays(numberOfDays);
     }
 
 
