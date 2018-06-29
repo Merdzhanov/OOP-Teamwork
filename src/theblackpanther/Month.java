@@ -23,6 +23,10 @@ public class Month {
         return false;
     }
 
+    public void addDayIntoMonth(Day newDay){
+        days.add(newDay);
+    }
+
     public void displayAllDays(){
         int counter = 0;
         Day currentDay;
