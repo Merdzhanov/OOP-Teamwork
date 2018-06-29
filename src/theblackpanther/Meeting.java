@@ -7,12 +7,12 @@ public class Meeting extends Event implements Editable {
     ArrayList<String> participants;
 
     @Override
-    public void display_event() {
+    public void displayEvent() {
 
     }
 
     @Override
-    public void delete_event() {
+    public void deleteEvent() {
 
     }
 
