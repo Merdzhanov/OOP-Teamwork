@@ -3,12 +3,16 @@ package theblackpanther;
 import java.util.ArrayList;
 
 public class Year {
-    private YearNumber yearNumber;
+    private String yearNumber;
     private ArrayList<Month> months;
 
-    public Year(YearNumber yearNumber) {
+    public Year(String yearNumber) {
         setYearNumber(yearNumber);
         setMonths(new ArrayList<Month>());
+    }
+
+    public void addMonthIntoYear (Month newMonth){
+        months.add(newMonth);
     }
 
     public void displayAllMonths(){
@@ -25,11 +29,11 @@ public class Year {
         }
     }
 
-    public YearNumber getYearNumber() {
+    public String getYearNumber() {
         return yearNumber;
     }
 
-    public void setYearNumber(YearNumber yearNumber) {
+    public void setYearNumber(String yearNumber) {
         this.yearNumber = yearNumber;
     }
 
