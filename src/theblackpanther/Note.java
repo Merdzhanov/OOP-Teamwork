@@ -14,4 +14,8 @@ public class Note {
     public void setNoteContent(String noteContent) {
         this.noteContent = noteContent;
     }
+
+    public String displayNote(){
+        return getNoteContent();
+    }
 }
