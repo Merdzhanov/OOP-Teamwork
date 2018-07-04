@@ -24,10 +24,10 @@ public class SportEvent extends Event{
                          "Second competitor:    " + getSecondCompetitor() + "\n");
     }
 
-    @Override
-    public void deleteEvent() {
-
-    }
+//    @Override
+//    public void deleteEvent() {
+//
+//    }
 
 
 
