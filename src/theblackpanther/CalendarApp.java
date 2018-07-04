@@ -98,4 +98,25 @@ public class CalendarApp {
             }
         }
     }
-}
+
+    public Year returnYear(String yearNumber) {
+        for (Year currentYear : this.calendarYears) {
+            if (currentYear.getYearNumber().equals(yearNumber)) {
+                return currentYear;
+            } else {
+                //exception
+                System.out.println("No such year in this calendar!");
+            }
+        }
+        return null;
+    }
+
+    public Day findDay(String day, String month, String year) {
+            Year yearInstance = returnYear(year);
+            Month monthInstance = yearInstance.returnMonth(month);
+            Day dayInstance = monthInstance.returnDay(day);
+            return dayInstance;
+
+        }
+    }
+

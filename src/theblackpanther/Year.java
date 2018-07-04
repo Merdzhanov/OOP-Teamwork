@@ -6,6 +6,18 @@ public class Year {
     private String yearNumber;
     private ArrayList<Month> months;
 
+    public Month returnMonth(String monthName) {
+        for (Month monthInstance : this.months) {
+            if (monthInstance.getName().equals(monthName)) {
+                return monthInstance;
+            } else {
+                //exception
+                System.out.println("Wrong month name!");
+            }
+        }
+        return null;
+    }
+
     public Year(String yearNumber) {
         setYearNumber(yearNumber);
         setMonths(new ArrayList<Month>());

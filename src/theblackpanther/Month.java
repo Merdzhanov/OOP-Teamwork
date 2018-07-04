@@ -8,6 +8,18 @@ public class Month {
     private ArrayList<Day> eventDays;
     private int numberOfDays;
 
+    public Day returnDay(String dayNumber) {
+        for (Day dayInstance : this.eventDays) {
+            if (dayInstance.getDate().equals(dayNumber)) {
+                return dayInstance;
+            } else {
+                //exception
+                System.out.println("No such day in this month!");
+            }
+        }
+        return null;
+    }
+
     public Month(MonthName name, int numberOfDays) {
         setName(name);
         setDays(new ArrayList<Day>());

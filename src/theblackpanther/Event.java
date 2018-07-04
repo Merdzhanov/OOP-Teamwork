@@ -32,6 +32,7 @@ public abstract class Event {
         this(name, date, start_hour, end_hour, "");
     }
 
+
     public abstract void  displayEvent();
     public abstract void deleteEvent();
 
