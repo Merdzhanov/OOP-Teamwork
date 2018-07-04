@@ -16,9 +16,11 @@ public abstract class Event {
     }
 
     public Event() {
+
         this("", "", "", "", "");
     }
     public Event(String name) {
+
         this(name, "", "", "", "");
     }
     public Event(String name, String date) {
@@ -34,7 +36,7 @@ public abstract class Event {
 
 
     public abstract void  displayEvent();
-    public abstract void deleteEvent();
+   // public abstract void deleteEvent();
 
     public String getName() {
         return name;
