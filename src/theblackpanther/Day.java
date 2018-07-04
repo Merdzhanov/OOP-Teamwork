@@ -52,15 +52,39 @@ import java.util.List;
         }
 
         //Methods
-        public void createNewMeeting(String name, String date, String startHour, String endHour, String description) {
-            // add here: Meeting newMeeting = new Meeting(parameters);
-            // eventListForDay.add(newMeeting);
-            // the same for every type of event
+        public void createNewMeeting(String name, String date, String startHour, String endHour, String description, String place) {
+            MeetingEvent meeting = new MeetingEvent(name, date, startHour, endHour, description, place);
+            eventListForDay.add(meeting);
+        }
+
+        public void createNewDeadline(String name, String date, String startHour, String endHour, String description) {
+            DeadlineEvent deadline = new DeadlineEvent(name, date, startHour, endHour, description);
+            eventListForDay.add(deadline);
+        }
+
+        public void createNewVacation(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
+            VacationEvent vacation = new VacationEvent(name, date, startHour, endHour, description, place, vacationType);
+            eventListForDay.add(vacation);
+        }
+
+        public void createNewSportEvent(String name, String date, String startHour, String endHour, String description, String place, SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
+            SportEvent sport = new SportEvent(name, date, startHour, endHour, description, place, typeOfSport, firstCompetitor, secondCompetitor);
+            eventListForDay.add(sport);
+        }
+
+        public void createNewBirtday(String name, String date, String startHour, String endHour, String description, String place, String nameOfBirthdayPerson, String gift) {
+            BirhtdayEvent birthday = new BirhtdayEvent(name, date, startHour, endHour, description, place, nameOfBirthdayPerson, gift);
+            eventListForDay.add(birthday);
         }
 
         public void displayAllEvents() {
             for (Event event : eventListForDay) {
-                System.out.println(event);                   // need to Override toString
+                System.out.println("Event Name: " + event.getName());
+                System.out.println("Event Date: " + event.getDate());
+                System.out.println("Event Start Time: " + event.getStartHour());
+                System.out.println("Event End Time: " + event.getEndHour());
+                System.out.println("Event Description: " + event.getDescription());
+                System.out.println();
             }
         }
 
