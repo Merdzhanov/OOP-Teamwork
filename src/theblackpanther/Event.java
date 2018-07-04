@@ -53,7 +53,6 @@ public abstract class Event {
 
 
     public abstract void  displayEvent();
-   // public abstract void deleteEvent();
 
     public String getName() {
         return name;

@@ -1,6 +1,6 @@
 package theblackpanther;
 
-public class SportEvent extends Event{
+public class SportEvent extends Event implements Deletable{
 
     private String place;
     private SportType typeOfSport;
@@ -24,10 +24,25 @@ public class SportEvent extends Event{
                          "Second competitor:    " + getSecondCompetitor() + "\n");
     }
 
-//    @Override
-//    public void deleteEvent() {
-//
-//    }
+    @Override
+    public void deleteEvent(Day day, String nameOfEvent) {
+        int numberOfEvents = day.getEventListForDay().size();
+        for(int i = 0; i < numberOfEvents; i++){
+            Event currentEvent = day.getEventListForDay().get(i);
+            if(nameOfEvent.equals(currentEvent.getName())){
+                day.getEventListForDay().remove(i);
+            }
+        }
+
+
+        //remake method using Streaming API
+
+//        day.getEventListForDay()
+//                .stream()
+//                .filter(currentEvent -> currentEvent.getName().equals(nameOfEvent))
+//                .forEach(day.getEventListForDay() :: remove);
+
+    }
 
 
 

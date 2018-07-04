@@ -1,5 +1,5 @@
 package theblackpanther;
 
 public interface Deletable {
-    void delete();
+    void deleteEvent(Day ourDay, String nameOfEvent);
 }

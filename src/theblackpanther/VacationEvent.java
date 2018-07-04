@@ -23,7 +23,7 @@ public class VacationEvent extends Event implements Deletable {
     }
 
     @Override
-    public void delete() {
+    public void deleteEvent(Day ourDay, String nameOfEvent) {
 
     }
 
