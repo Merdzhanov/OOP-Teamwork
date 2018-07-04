@@ -1,6 +1,7 @@
 package theblackpanther;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MeetingEvent extends Event implements Editable, Deletable {
     private String place;

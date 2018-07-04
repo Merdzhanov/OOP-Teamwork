@@ -10,20 +10,6 @@ public abstract class Event {
     private String endHour;
     private String description;
 
-//    public ArrayList collectData(Scanner in){
-//        System.out.print("Event name: ");
-//        String name = in.nextLine();
-//        //String date = dayString + "/" + month + "/" + year;
-//        System.out.print("Start hour: ");
-//        String startHour = in.nextLine();
-//        System.out.print("End hour: ");
-//        String endHour = in.nextLine();
-//        System.out.print("Description: ");
-//        String description = in.nextLine();
-//        System.out.print("Place: ");
-//        String place = in.nextLine();
-//    return null}
-
     public Event(String name, String date, String startHour, String endHour, String description) {
         setName(name);
         setDate(date);

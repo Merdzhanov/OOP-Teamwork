@@ -2,8 +2,9 @@ package theblackpanther;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-    public class Day {
+public class Day {
         private String dayOfWeek;
         private String date;
         private List<Event> eventListForDay;
@@ -52,11 +53,26 @@ import java.util.List;
         }
 
         //Methods
-        public void createNewMeeting(String name, String date, String startHour, String endHour, String description) {
+        //public void createNewMeeting(String name, String date, String startHour, String endHour, String description) {
+        public void createNewMeeting(){
             // add here: Meeting newMeeting = new Meeting(parameters);
             // eventListForDay.add(newMeeting);
             // the same for every type of event
+            Scanner in=new Scanner(System.in);
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            System.out.print("Place: ");
+            String place = in.nextLine();
+            MeetingEvent newMeeting = new MeetingEvent(name, date, startHour, endHour, description, place);
+            this.addEvent(newMeeting);
         }
+
         public void addEvent(Event event) {
             eventListForDay.add(event);
         }

@@ -26,18 +26,7 @@ public class Main {
                     String eventType=in.nextLine();
                     switch(eventType) {
                         case "Meeting Event": {
-                            System.out.print("Event name: ");
-                            String name = in.nextLine();
-                            System.out.print("Start hour: ");
-                            String startHour = in.nextLine();
-                            System.out.print("End hour: ");
-                            String endHour = in.nextLine();
-                            System.out.print("Description: ");
-                            String description = in.nextLine();
-                            System.out.print("Place: ");
-                            String place = in.nextLine();
-                            MeetingEvent newMeeting = new MeetingEvent(name, date, startHour, endHour, description, place);
-                            day.addEvent(newMeeting);
+                            day.createNewMeeting();
                         }break;
                         case "Sport Event": {
                             System.out.print("Event name: ");
@@ -59,30 +48,30 @@ public class Main {
                             SportEvent sportEvent = new SportEvent(name, date, startHour, endHour, description, place,SportType.valueOf(typeOfSport),firstCompetitor,secondCompetitor);
                             day.addEvent(sportEvent);
                         }break;
+                        case "Deadline Event": {
+                            System.out.print("Event name: ");
+                            String name = in.nextLine();
+                            System.out.print("Start hour: ");
+                            String startHour = in.nextLine();
+                            System.out.print("End hour: ");
+                            String endHour = in.nextLine();
+                            System.out.print("Description: ");
+                            String description = in.nextLine();
+                            DeadlineEvent deadlineEvent = new DeadlineEvent(name, date, startHour, endHour, description);
+                            day.addEvent(deadlineEvent);
+                        }break;
                     }break;
                 case "2":{
-                    System.out.print("Year: ");
-                   // year = in.nextLine();
-                    System.out.print("Month: ");
-                   // month = in.nextLine();
-                    System.out.print("Day: ");
-                   // dayString = in.nextLine();
-                    //day = calendar.findDay(dayString, month, year);
-                    //day.displayAllEvents();
+                    day=calendar.chooseDay(in);
+                    day.displayAllEvents();
                     break;
                 }
                 case "3":
-                    System.out.print("Year: ");
-                //    year = in.nextLine();
-                    System.out.print("Month: ");
-                  //  month = in.nextLine();
-                    System.out.print("Day: ");
-                    //dayString = in.nextLine();
-                    //day = calendar.findDay(dayString, month, year);
+                    day=calendar.chooseDay(in);
                     System.out.print("Event Name: ");
                     String  eventName=in.nextLine();
-                    //Event event= day.selectEvent(eventName);
-                    //day.removeEvent(event);
+                    Event event= day.selectEvent(eventName);
+                    day.removeEvent(event);
                     break;
             }
         }
