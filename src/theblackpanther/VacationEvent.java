@@ -24,7 +24,13 @@ public class VacationEvent extends Event implements Deletable {
 
     @Override
     public void deleteEvent(Day day, Event ourEvent) {
-
+        int numberOfEvents = day.getEventListForDay().size();
+        for(int i = 0; i < numberOfEvents; i++){
+            Event currentEvent = day.getEventListForDay().get(i);
+            if(ourEvent.getName().equals(currentEvent.getName())){
+                day.getEventListForDay().remove(i);
+            }
+        }
     }
 
     void addParticipant(String participant){
