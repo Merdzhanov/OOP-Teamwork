@@ -37,7 +37,7 @@ public class MeetingEvent extends Event implements Editable, Deletable {
     }
 
     @Override
-    public void delete() {
+    public void deleteEvent(Day ourDay, String nameOfEvent) {
 
     }
 
