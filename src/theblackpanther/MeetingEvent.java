@@ -2,11 +2,11 @@ package theblackpanther;
 
 import java.util.ArrayList;
 
-public class Meeting extends Event implements Editable, Deletable {
+public class MeetingEvent extends Event implements Editable, Deletable {
     private String place;
     private ArrayList<String> participants;
 
-    public Meeting(String name, String date, String startHour, String endHour, String description, String place) {
+    public MeetingEvent(String name, String date, String startHour, String endHour, String description, String place) {
         super(name, date, startHour, endHour, description);
         setPlace(place);
         setParticipants();
