@@ -25,14 +25,23 @@ public class SportEvent extends Event implements Deletable{
     }
 
     @Override
-    public void deleteEvent(Day day, Event ourEvent) {
+    public void deleteEvent(Day day, String nameOfEvent) {
         int numberOfEvents = day.getEventListForDay().size();
         for(int i = 0; i < numberOfEvents; i++){
             Event currentEvent = day.getEventListForDay().get(i);
-            if(ourEvent.getName().equals(currentEvent.getName())){
+            if(nameOfEvent.equals(currentEvent.getName())){
                 day.getEventListForDay().remove(i);
             }
         }
+
+
+        //remake method using Streaming API
+
+//        day.getEventListForDay()
+//                .stream()
+//                .filter(currentEvent -> currentEvent.getName().equals(nameOfEvent))
+//                .forEach(day.getEventListForDay() :: remove);
+
     }
 
 
