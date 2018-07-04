@@ -18,10 +18,6 @@ public class MeetingEvent extends Event implements Editable, Deletable {
                 "Event Participants: %s\n", getName(), getDate(), getStartHour(), getEndHour(), getDescription(), getPlace(), getParticipants());
     }
 
-    /*@Override
-    public void deleteEvent() {
-
-    }*/
 
     void addParticipant(String participant){
         participants.add(participant);
@@ -37,8 +33,14 @@ public class MeetingEvent extends Event implements Editable, Deletable {
     }
 
     @Override
-    public void delete() {
-
+    public void deleteEvent(Day day, Event ourEvent) {
+        int numberOfEvents = day.getEventListForDay().size();
+        for(int i = 0; i < numberOfEvents; i++){
+            Event currentEvent = day.getEventListForDay().get(i);
+            if(ourEvent.getName().equals(currentEvent.getName())){
+                day.getEventListForDay().remove(i);
+            }
+        }
     }
 
     public String getPlace() {
