@@ -88,7 +88,7 @@ public class CalendarApp {
                     catch (Exception e) {
                         System.out.println(e);
                     }
-                    DateFormat format2=new SimpleDateFormat("EEEE");
+                    DateFormat format2 = new SimpleDateFormat("EEEE");
                     String finalDay = format2.format(dt1);
 
                     Day ourDay = new Day(finalDay,"" + currentDay);

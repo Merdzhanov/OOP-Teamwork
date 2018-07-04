@@ -7,12 +7,14 @@ import java.util.List;
         private String dayOfWeek;
         private String date;
         private List<Event> eventListForDay;
+        private ArrayList<Note> notes;
 
         //Constructor
         public Day(String dayOfWeek, String date) {
             setDayOfWeek(dayOfWeek);
             setDate(date);
             setEventListForDay();
+            setNotes(new ArrayList<>());
         }
 
         //Getters
@@ -28,6 +30,9 @@ import java.util.List;
             return eventListForDay;
         }
 
+        public ArrayList<Note> getNotes() {
+            return notes;
+        }
 
         //Setters
         private void setDayOfWeek(String dayOfWeek) {
@@ -40,6 +45,10 @@ import java.util.List;
 
         private void setEventListForDay() {
             this.eventListForDay = new ArrayList<>();
+        }
+
+        public void setNotes(ArrayList<Note> notes) {
+            this.notes = notes;
         }
 
         //Methods
@@ -62,5 +71,10 @@ import java.util.List;
                 }
             }
             return null;
+        }
+
+        public void createNote(String noteContent){
+            Note newNote = new Note(noteContent);
+            notes.add(newNote);
         }
     }
