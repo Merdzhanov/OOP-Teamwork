@@ -103,11 +103,9 @@ public class CalendarApp {
         for (Year currentYear : this.calendarYears) {
             if (currentYear.getYearNumber().equals(yearNumber)) {
                 return currentYear;
-            } else {
-                //exception
-                System.out.println("No such year in this calendar!");
             }
         }
+        System.out.println("No such year in this calendar!");
         return null;
     }
 

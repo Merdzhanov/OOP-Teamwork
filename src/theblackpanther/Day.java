@@ -48,6 +48,12 @@ import java.util.List;
             // eventListForDay.add(newMeeting);
             // the same for every type of event
         }
+        public void addEvent(Event event) {
+            eventListForDay.add(event);
+        }
+        public void removeEvent(Event event) {
+            eventListForDay.remove(event);
+        }
 
         public void displayAllEvents() {
             for (Event event : eventListForDay) {

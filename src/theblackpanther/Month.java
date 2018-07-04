@@ -9,14 +9,13 @@ public class Month {
     private int numberOfDays;
 
     public Day returnDay(String dayNumber) {
-        for (Day dayInstance : this.eventDays) {
+        for (Day dayInstance : this.days) {
             if (dayInstance.getDate().equals(dayNumber)) {
                 return dayInstance;
-            } else {
-                //exception
-                System.out.println("No such day in this month!");
             }
         }
+        //exception
+        System.out.println("No such day in this month!");
         return null;
     }
 

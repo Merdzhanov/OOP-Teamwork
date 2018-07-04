@@ -6,12 +6,22 @@ public class Meeting extends Event implements Editable, Deletable {
     String place;
     ArrayList<String> participants;
 
+    public Meeting(String name, String date, String startHour, String endHour, String description, String place) {
+        super(name, date, startHour, endHour, description);
+        this.place = place;
+        this.participants = new ArrayList<String>();
+    }
+
     @Override
     public void displayEvent() {
 
     }
 
-    /*@Override
+    @Override
+    public void deleteEvent() {
+
+    }
+/*@Override
     public void deleteEvent() {
 
     }*/

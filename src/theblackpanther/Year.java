@@ -8,13 +8,11 @@ public class Year {
 
     public Month returnMonth(String monthName) {
         for (Month monthInstance : this.months) {
-            if (monthInstance.getName().equals(monthName)) {
+            if (monthInstance.getName().name().equals(monthName)) {
                 return monthInstance;
-            } else {
-                //exception
-                System.out.println("Wrong month name!");
             }
         }
+        System.out.println("Wrong month name!");
         return null;
     }
 

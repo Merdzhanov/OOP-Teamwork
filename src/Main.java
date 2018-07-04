@@ -45,13 +45,37 @@ public class Main {
                             String endHour = in.nextLine();
                             System.out.print("Description: ");
                             String description = in.nextLine();
-                            //Meeting newMeeting=new Event(name,date, startHour, endHour, description);
-
+                            System.out.print("Place: ");
+                            String place = in.nextLine();
+                            Meeting newMeeting=new Meeting(name,date, startHour, endHour, description, place);
+                            day.addEvent(newMeeting);
                             break;
-                    }
-break;
-                    //Event(String name, String date, String startHour, String endHour, String description)
-                    //System.out.println();
+                    }break;
+                case "2":{
+                    System.out.print("Year: ");
+                    year = in.nextLine();
+                    System.out.print("Month: ");
+                    month = in.nextLine();
+                    System.out.print("Day: ");
+                    dayString = in.nextLine();
+                    day = calendar.findDay(dayString, month, year);
+                    day.displayAllEvents();
+                    break;
+                }
+                case "3":
+                    System.out.print("Year: ");
+                    year = in.nextLine();
+                    System.out.print("Month: ");
+                    month = in.nextLine();
+                    System.out.print("Day: ");
+                    dayString = in.nextLine();
+                    day = calendar.findDay(dayString, month, year);
+                    System.out.print("Event Name: ");
+                    String  eventName=in.nextLine();
+                    Event event= day.selectEvent(eventName);
+                    day.removeEvent(event);
+                    event.deleteEvent();
+                    break;
             }
         }
     }
