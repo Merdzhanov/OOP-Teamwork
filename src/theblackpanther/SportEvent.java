@@ -1,6 +1,6 @@
 package theblackpanther;
 
-public class SportEvent extends Event{
+public class SportEvent extends Event implements Deletable{
 
     private String place;
     private SportType typeOfSport;
@@ -25,8 +25,14 @@ public class SportEvent extends Event{
     }
 
     @Override
-    public void deleteEvent() {
-
+    public void deleteEvent(Day day, Event ourEvent) {
+        int numberOfEvents = day.getEventListForDay().size();
+        for(int i = 0; i < numberOfEvents; i++){
+            Event currentEvent = day.getEventListForDay().get(i);
+            if(ourEvent.getName().equals(currentEvent.getName())){
+                day.getEventListForDay().remove(i);
+            }
+        }
     }
 
 
