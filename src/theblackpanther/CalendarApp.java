@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 public class CalendarApp {
     private ArrayList<Year> calendarYears;
@@ -107,6 +108,18 @@ public class CalendarApp {
         }
         System.out.println("No such year in this calendar!");
         return null;
+    }
+
+    public Day chooseDay(Scanner in) {
+        System.out.print("Year: ");
+        String year = in.nextLine();
+        System.out.print("Month: ");
+        String month = in.nextLine();
+        System.out.print("Day: ");
+        String dayString = in.nextLine();
+        Day day = this.findDay(dayString, month, year);
+        return day;
+
     }
 
     public Day findDay(String day, String month, String year) {
