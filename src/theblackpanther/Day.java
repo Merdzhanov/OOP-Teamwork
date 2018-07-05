@@ -203,4 +203,17 @@ public class Day {
         Note newNote = new Note(noteContent);
         notes.add(newNote);
     }
+
+    public void deleteEvent() {
+        Scanner in=new Scanner(System.in);
+        System.out.print("Event Name: ");
+        String eventName=in.nextLine();
+        Deletable deletableEvent= selectDeletableEvent(eventName);
+        eventListForDay.remove(deletableEvent);
+        deletableEventListForDay.remove(deletableEvent);
+        if (editableEventListForDay.contains(deletableEvent)) {
+            editableEventListForDay.remove(deletableEvent);
+        }
+        deletableEvent.deleteEvent(this, eventName);
+    }
 }
