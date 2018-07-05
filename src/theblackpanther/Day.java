@@ -17,7 +17,9 @@ public class Day {
         setDayOfWeek(dayOfWeek);
         setDate(date);
         setEventListForDay();
-        setNotes(new ArrayList<>());
+        setEditableEventListForDay();
+        setDeletableEventListForDay();
+        setNotes();
     }
 
     //Getters
@@ -50,8 +52,16 @@ public class Day {
         this.eventListForDay = new ArrayList<>();
     }
 
-    public void setNotes(ArrayList<Note> notes) {
-        this.notes = notes;
+    public void setNotes() {
+        this.notes = new ArrayList<>();
+    }
+
+    public void setEditableEventListForDay() {
+        this.editableEventListForDay = new ArrayList<>();
+    }
+
+    public void setDeletableEventListForDay() {
+        this.deletableEventListForDay = new ArrayList<>();
     }
 
     //Methods
@@ -223,13 +233,13 @@ public class Day {
         String eventName = in.nextLine();
         Editable editableEvent = selectEditableEvent(eventName);
         //if (editableEvent instanceof MeetingEvent) {
-            System.out.print("Start hour: ");
-            String startHour = in.nextLine();
-            System.out.print("End hour: ");
-            String endHour = in.nextLine();
-            System.out.print("Description: ");
-            String description = in.nextLine();
-            editableEvent.edit(eventName, this.getDate(), startHour, endHour, description);
+        System.out.print("Start hour: ");
+        String startHour = in.nextLine();
+        System.out.print("End hour: ");
+        String endHour = in.nextLine();
+        System.out.print("Description: ");
+        String description = in.nextLine();
+        editableEvent.edit(eventName, this.getDate(), startHour, endHour, description);
         /*}
         if (editableEvent instanceof DeadlineEvent) {
             System.out.print("Event name: ");
