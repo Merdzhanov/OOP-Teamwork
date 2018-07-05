@@ -69,9 +69,79 @@ public class Day {
             String description = in.nextLine();
             System.out.print("Place: ");
             String place = in.nextLine();
-            MeetingEvent newMeeting = new MeetingEvent(name, date, startHour, endHour, description, place);
+            MeetingEvent newMeeting = new MeetingEvent(name, this.getDate(), startHour, endHour, description, place);
             this.addEvent(newMeeting);
         }
+    public void createNewSportEvent(){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Event name: ");
+        String name = in.nextLine();
+        System.out.print("Start hour: ");
+        String startHour = in.nextLine();
+        System.out.print("End hour: ");
+        String endHour = in.nextLine();
+        System.out.print("Description: ");
+        String description = in.nextLine();
+        System.out.print("Place: ");
+        String place = in.nextLine();
+        System.out.print("Type of sport: ");
+        String typeOfSport=in.nextLine();
+        System.out.print("First Competitor: ");
+        String firstCompetitor = in.nextLine();
+        System.out.print("Second Competitor: ");
+        String secondCompetitor = in.nextLine();
+        SportEvent sportEvent = new SportEvent(name, date, startHour, endHour, description, place,SportType.valueOf(typeOfSport),firstCompetitor,secondCompetitor);
+        this.addEvent(sportEvent);
+    }
+    public void createNewDeadlineEvent(){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Event name: ");
+        String name = in.nextLine();
+        System.out.print("Start hour: ");
+        String startHour = in.nextLine();
+        System.out.print("End hour: ");
+        String endHour = in.nextLine();
+        System.out.print("Description: ");
+        String description = in.nextLine();
+        DeadlineEvent deadlineEvent = new DeadlineEvent(name, this.getDate(), startHour, endHour, description);
+        this.addEvent(deadlineEvent);
+    }
+    public void createNewBirthdayEvent(){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Event name: ");
+        String name = in.nextLine();
+        System.out.print("Start hour: ");
+        String startHour = in.nextLine();
+        System.out.print("End hour: ");
+        String endHour = in.nextLine();
+        System.out.print("Description: ");
+        String description = in.nextLine();
+        System.out.print("Place: ");
+        String place = in.nextLine();
+        System.out.print("Who has a birthday: ");
+        String nameOfBirthdayPerson = in.nextLine();
+        System.out.print("Gift: ");
+        String gift = in.nextLine();
+        BirhtdayEvent birthdayEvent = new BirhtdayEvent(name, this.getDate(), startHour, endHour, description, place, nameOfBirthdayPerson, gift);
+        this.addEvent(birthdayEvent);
+    }
+    public void createNewVacationEvent(){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Event name: ");
+        String name = in.nextLine();
+        System.out.print("Start hour: ");
+        String startHour = in.nextLine();
+        System.out.print("End hour: ");
+        String endHour = in.nextLine();
+        System.out.print("Description: ");
+        String description = in.nextLine();
+        System.out.print("Place: ");
+        String place = in.nextLine();
+        System.out.print("Vacation Type: ");
+        String vacationType = in.nextLine();
+        VacationEvent vacationEvent = new VacationEvent(name, this.getDate(), startHour, endHour, description, place, VacationType.valueOf(vacationType));
+        this.addEvent(vacationEvent);
+    }
 
         public void addEvent(Event event) {
             eventListForDay.add(event);
@@ -82,7 +152,8 @@ public class Day {
 
         public void displayAllEvents() {
             for (Event event : eventListForDay) {
-                System.out.println(event);                   // need to Override toString
+                event.displayEvent();
+               // System.out.println(event);                   // need to Override toString
             }
         }
 

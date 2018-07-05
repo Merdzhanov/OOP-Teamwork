@@ -19,55 +19,33 @@ public class Main {
             switch(command){
                 case "0": break;
                 case "1":
-                    Day day=calendar.chooseDay(in);
-                    String date=day.getDate();
-
+                    Day day=calendar.chooseDay();
                     System.out.print("Event type: ");
                     String eventType=in.nextLine();
                     switch(eventType) {
-                        case "Meeting Event": {
+                        case "Meeting Event":
                             day.createNewMeeting();
-                        }break;
-                        case "Sport Event": {
-                            System.out.print("Event name: ");
-                            String name = in.nextLine();
-                            System.out.print("Start hour: ");
-                            String startHour = in.nextLine();
-                            System.out.print("End hour: ");
-                            String endHour = in.nextLine();
-                            System.out.print("Description: ");
-                            String description = in.nextLine();
-                            System.out.print("Place: ");
-                            String place = in.nextLine();
-                            System.out.print("Type of sport: ");
-                            String typeOfSport=in.nextLine();
-                            System.out.print("First Competitor: ");
-                            String firstCompetitor = in.nextLine();
-                            System.out.print("Second Competitor: ");
-                            String secondCompetitor = in.nextLine();
-                            SportEvent sportEvent = new SportEvent(name, date, startHour, endHour, description, place,SportType.valueOf(typeOfSport),firstCompetitor,secondCompetitor);
-                            day.addEvent(sportEvent);
-                        }break;
-                        case "Deadline Event": {
-                            System.out.print("Event name: ");
-                            String name = in.nextLine();
-                            System.out.print("Start hour: ");
-                            String startHour = in.nextLine();
-                            System.out.print("End hour: ");
-                            String endHour = in.nextLine();
-                            System.out.print("Description: ");
-                            String description = in.nextLine();
-                            DeadlineEvent deadlineEvent = new DeadlineEvent(name, date, startHour, endHour, description);
-                            day.addEvent(deadlineEvent);
-                        }break;
+                            break;
+                        case "Sport Event":
+                            day.createNewSportEvent();
+                            break;
+                        case "Birthday Event":
+                            day.createNewBirthdayEvent();
+                            break;
+                        case "Deadline Event":
+                            day.createNewDeadlineEvent();
+                            break;
+                        case "Vacation Event":
+                            day.createNewVacationEvent();
+                            break;
                     }break;
                 case "2":{
-                    day=calendar.chooseDay(in);
+                    day=calendar.chooseDay();
                     day.displayAllEvents();
                     break;
                 }
                 case "3":
-                    day=calendar.chooseDay(in);
+                    day=calendar.chooseDay();
                     System.out.print("Event Name: ");
                     String  eventName=in.nextLine();
                     Event event= day.selectEvent(eventName);

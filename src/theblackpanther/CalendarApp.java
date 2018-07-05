@@ -106,11 +106,20 @@ public class CalendarApp {
                 return currentYear;
             }
         }
+//        public void wrapException(String input) throws MyBusinessException {
+//            try {
+//                // do something
+//            } catch (NumberFormatException e) {
+//                throw new MyBusinessException("A message that describes the error.", e, ErrorCode.INVALID_PORT_CONFIGURATION);
+//            }
+//        }
         System.out.println("No such year in this calendar!");
         return null;
     }
 
-    public Day chooseDay(Scanner in) {
+    public Day chooseDay() {
+        Scanner in=new Scanner(System.in);
+        //System.out.print("Event name: ");
         System.out.print("Year: ");
         String year = in.nextLine();
         System.out.print("Month: ");
