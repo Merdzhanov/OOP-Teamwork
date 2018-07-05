@@ -12,8 +12,9 @@ public class Main {
         while(!command.equals("0")){
             System.out.println("Select activity:");
             System.out.println("1 - Add event");
-            System.out.println("2 - Display events per day");
-            System.out.println("3 - Delete event");
+            System.out.println("2 - Add note");
+            System.out.println("3 - Display events per day");
+            System.out.println("4 - Delete event");
             System.out.println("0 - Exit");
             command = in.nextLine();
             switch(command){
@@ -41,10 +42,15 @@ public class Main {
                     }break;
                 case "2":{
                     day=calendar.chooseDay();
+                    day.createNote();
+                    break;
+                }
+                case "3":{
+                    day=calendar.chooseDay();
                     day.displayAllEvents();
                     break;
                 }
-                case "3":
+                case "4":
                     day=calendar.chooseDay();
                     System.out.print("Event Name: ");
                     String  eventName=in.nextLine();
