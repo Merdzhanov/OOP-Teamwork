@@ -2,8 +2,9 @@ package theblackpanther;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-    public class Day {
+public class Day {
         private String dayOfWeek;
         private String date;
         private List<Event> eventListForDay;
@@ -52,28 +53,98 @@ import java.util.List;
         }
 
         //Methods
-        public void createNewMeeting(String name, String date, String startHour, String endHour, String description, String place) {
+        //public void createNewMeeting(String name, String date, String startHour, String endHour, String description, String place) {
+        public void createNewMeeting(){
+            Scanner in=new Scanner(System.in);
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            System.out.print("Place: ");
+            String place = in.nextLine();
             MeetingEvent meeting = new MeetingEvent(name, date, startHour, endHour, description, place);
             eventListForDay.add(meeting);
         }
 
-        public void createNewDeadline(String name, String date, String startHour, String endHour, String description) {
+        //public void createNewDeadline(String name, String date, String startHour, String endHour, String description) {
+        public void createNewDeadlineEvent(){
+            Scanner in=new Scanner(System.in);
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
             DeadlineEvent deadline = new DeadlineEvent(name, date, startHour, endHour, description);
             eventListForDay.add(deadline);
         }
 
-        public void createNewVacation(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
-            VacationEvent vacation = new VacationEvent(name, date, startHour, endHour, description, place, vacationType);
+        //public void createNewVacation(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
+        public void createNewVacationEvent(){
+            Scanner in=new Scanner(System.in);
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            System.out.print("Place: ");
+            String place = in.nextLine();
+            System.out.print("Vacation Type: ");
+            String vacationType = in.nextLine();
+            VacationEvent vacation = new VacationEvent(name, date, startHour, endHour, description, place, VacationType.valueOf(vacationType));
             eventListForDay.add(vacation);
         }
 
-        public void createNewSportEvent(String name, String date, String startHour, String endHour, String description, String place, SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
-            SportEvent sport = new SportEvent(name, date, startHour, endHour, description, place, typeOfSport, firstCompetitor, secondCompetitor);
+        //public void createNewSportEvent(String name, String date, String startHour, String endHour, String description, String place, SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
+        public void createNewSportEvent(){
+            Scanner in=new Scanner(System.in);
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            System.out.print("Place: ");
+            String place = in.nextLine();
+            System.out.print("Type of sport: ");
+            String typeOfSport=in.nextLine();
+            System.out.print("First Competitor: ");
+            String firstCompetitor = in.nextLine();
+            System.out.print("Second Competitor: ");
+            String secondCompetitor = in.nextLine();
+            SportEvent sport = new SportEvent(name, date, startHour, endHour, description, place, SportType.valueOf(typeOfSport), firstCompetitor, secondCompetitor);
             eventListForDay.add(sport);
         }
 
-        public void createNewBirtday(String name, String date, String startHour, String endHour, String description, String place, String nameOfBirthdayPerson, String gift) {
-            BirhtdayEvent birthday = new BirhtdayEvent(name, date, startHour, endHour, description, place, nameOfBirthdayPerson, gift);
+        //public void createNewBirthday(String name, String date, String startHour, String endHour, String description, String place, String nameOfBirthdayPerson, String gift) {
+        public void createNewBirthdayEvent(){
+            Scanner in=new Scanner(System.in);
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            System.out.print("Place: ");
+            String place = in.nextLine();
+            System.out.print("Who has a birthday: ");
+            String nameOfBirthdayPerson = in.nextLine();
+            System.out.print("Gift: ");
+            String gift = in.nextLine();
+            BirthdayEvent birthday = new BirthdayEvent(name, date, startHour, endHour, description, place, nameOfBirthdayPerson, gift);
             eventListForDay.add(birthday);
         }
 
