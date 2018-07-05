@@ -42,7 +42,7 @@ public class Month {
         System.out.println();
         days.subList(21, 28).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
         System.out.println();
-        days.subList(28, (int)daysSize - 1).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        days.subList(28, (int)daysSize).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
         System.out.println();
 
 
