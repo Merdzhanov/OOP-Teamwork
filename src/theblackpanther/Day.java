@@ -8,6 +8,8 @@ public class Day {
         private String dayOfWeek;
         private String date;
         private List<Event> eventListForDay;
+        private List<Editable> editableEventListForDay;
+        private List<Deletable> deletableEventListForDay;
         private ArrayList<Note> notes;
 
         //Constructor
@@ -68,6 +70,8 @@ public class Day {
             String place = in.nextLine();
             MeetingEvent meeting = new MeetingEvent(name, date, startHour, endHour, description, place);
             eventListForDay.add(meeting);
+            editableEventListForDay.add(meeting);
+            deletableEventListForDay.add(meeting);
         }
 
         //public void createNewDeadline(String name, String date, String startHour, String endHour, String description) {
@@ -83,6 +87,7 @@ public class Day {
             String description = in.nextLine();
             DeadlineEvent deadline = new DeadlineEvent(name, date, startHour, endHour, description);
             eventListForDay.add(deadline);
+            editableEventListForDay.add(deadline);
         }
 
         //public void createNewVacation(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
@@ -102,6 +107,7 @@ public class Day {
             String vacationType = in.nextLine();
             VacationEvent vacation = new VacationEvent(name, date, startHour, endHour, description, place, VacationType.valueOf(vacationType));
             eventListForDay.add(vacation);
+            deletableEventListForDay.add(vacation);
         }
 
         //public void createNewSportEvent(String name, String date, String startHour, String endHour, String description, String place, SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
@@ -125,6 +131,7 @@ public class Day {
             String secondCompetitor = in.nextLine();
             SportEvent sport = new SportEvent(name, date, startHour, endHour, description, place, SportType.valueOf(typeOfSport), firstCompetitor, secondCompetitor);
             eventListForDay.add(sport);
+            deletableEventListForDay.add(sport);
         }
 
         //public void createNewBirthday(String name, String date, String startHour, String endHour, String description, String place, String nameOfBirthdayPerson, String gift) {
