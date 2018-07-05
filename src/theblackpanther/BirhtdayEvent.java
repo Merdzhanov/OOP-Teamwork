@@ -1,12 +1,12 @@
 package theblackpanther;
 
-public class BirhtdayEvent extends Event {
+public class BirthdayEvent extends Event {
 
     private String place;
     private String nameOfBirthdayPerson;
     private String gift;
 
-    public BirhtdayEvent(String name, String date, String startHour, String endHour,
+    public BirthdayEvent(String name, String date, String startHour, String endHour,
                          String description, String place, String nameOfBirthdayPerson, String gift) {
         super(name, date, startHour, endHour, description);
         setPlace(place);
