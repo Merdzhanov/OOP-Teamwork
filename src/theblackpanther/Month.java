@@ -34,9 +34,6 @@ public class Month {
 
         long daysSize = days.stream().count();
 
-        List<Day> filtered = days.stream().filter(this::isThereEvent).collect(Collectors.toList());
-        eventDays.addAll(filtered);
-
         days.stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
         System.out.println();
         days.subList(7, 14).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
@@ -67,6 +64,9 @@ public class Month {
     }
 
     public void displayAllDaysWithEvents(){
+        List<Day> filtered = days.stream().filter(this::isThereEvent).collect(Collectors.toList());
+        eventDays.addAll(filtered);
+
         for(int i = 0; i < eventDays.size(); i++) {
             System.out.println(eventDays.get(i) + " ");
         }
