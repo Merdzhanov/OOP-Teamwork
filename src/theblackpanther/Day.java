@@ -168,7 +168,11 @@ public class Day {
             return null;
         }
 
-        public void createNote(String noteContent){
+        //public void createNote(String noteContent){
+        public void createNote(){
+            Scanner in=new Scanner(System.in);
+            System.out.print("Type your text: ");
+            String noteContent = in.nextLine();
             Note newNote = new Note(noteContent);
             notes.add(newNote);
         }
