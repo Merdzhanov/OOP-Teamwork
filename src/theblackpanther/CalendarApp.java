@@ -100,6 +100,28 @@ public class CalendarApp {
         }
     }
 
+    public Day chooseDay() {
+        Scanner in=new Scanner(System.in);
+        //System.out.print("Event name: ");
+        System.out.print("Year: ");
+        String year = in.nextLine();
+        System.out.print("Month: ");
+        String month = in.nextLine();
+        System.out.print("Day: ");
+        String dayString = in.nextLine();
+        Day day = this.findDay(dayString, month, year);
+        return day;
+    }
+
+    public Day findDay(String day, String month, String year) {
+            Year yearInstance = returnYear(year);
+            Month monthInstance = yearInstance.returnMonth(month);
+            Day dayInstance = monthInstance.returnDay(day);
+            return dayInstance;
+
+        }
+
+
     public Year returnYear(String yearNumber) {
         for (Year currentYear : this.calendarYears) {
             if (currentYear.getYearNumber().equals(yearNumber)) {
@@ -116,27 +138,5 @@ public class CalendarApp {
         System.out.println("No such year in this calendar!");
         return null;
     }
-
-    public Day chooseDay() {
-        Scanner in=new Scanner(System.in);
-        //System.out.print("Event name: ");
-        System.out.print("Year: ");
-        String year = in.nextLine();
-        System.out.print("Month: ");
-        String month = in.nextLine();
-        System.out.print("Day: ");
-        String dayString = in.nextLine();
-        Day day = this.findDay(dayString, month, year);
-        return day;
-
-    }
-
-    public Day findDay(String day, String month, String year) {
-            Year yearInstance = returnYear(year);
-            Month monthInstance = yearInstance.returnMonth(month);
-            Day dayInstance = monthInstance.returnDay(day);
-            return dayInstance;
-
-        }
-    }
+}
 
