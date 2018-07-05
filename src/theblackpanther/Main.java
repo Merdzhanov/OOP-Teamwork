@@ -49,7 +49,7 @@ public class Main {
                     System.out.print("Event Name: ");
                     String  eventName=in.nextLine();
                     Event event= day.selectEvent(eventName);
-                    day.removeEvent(event);
+                    //day.removeEvent(event);
                     break;
             }
         }
