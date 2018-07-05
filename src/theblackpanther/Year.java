@@ -16,7 +16,16 @@ public class Year {
     }
 
     public void displayAllMonths(){
-        int monthCounter = 0;
+
+        int monthsSize = months.size();
+
+        months.stream().limit(6).forEach(month -> System.out.printf("%10s", month + " "));
+        System.out.println();
+        months.subList(6, monthsSize).stream().forEach(month -> System.out.printf("%10s", month + " "));
+        System.out.println();
+
+
+   /*     int monthCounter = 0;
         Month currentMonth;
         for(int i = 0; i < months.size(); i++){
             currentMonth = months.get(i);
@@ -26,7 +35,7 @@ public class Year {
                 monthCounter = 0;
                 System.out.println();
             }
-        }
+        } */
     }
 
     public String getYearNumber() {
