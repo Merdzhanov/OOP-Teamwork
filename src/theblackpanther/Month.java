@@ -1,6 +1,8 @@
 package theblackpanther;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Month {
     private MonthName name;
@@ -29,7 +31,25 @@ public class Month {
     }
 
     public void displayAllDays(){
-        int counter = 0;
+
+        long daysSize = days.stream().count();
+
+        List<Day> filtered = days.stream().filter(this::isThereEvent).collect(Collectors.toList());
+        eventDays.addAll(filtered);
+
+        days.stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        System.out.println();
+        days.subList(7, 14).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        System.out.println();
+        days.subList(14, 21).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        System.out.println();
+        days.subList(21, 28).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        System.out.println();
+        days.subList(28, (int)daysSize - 1).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        System.out.println();
+
+
+    /*    int counter = 0;
         Day currentDay;
         for(int i = 0; i < days.size(); i++){
             currentDay = days.get(i);
@@ -43,7 +63,7 @@ public class Month {
                 System.out.println();
                 counter = 0;
             }
-        }
+        } */
     }
 
     public void displayAllDaysWithEvents(){
