@@ -205,15 +205,42 @@ public class Day {
     }
 
     public void deleteEvent() {
-        Scanner in=new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         System.out.print("Event Name: ");
-        String eventName=in.nextLine();
-        Deletable deletableEvent= selectDeletableEvent(eventName);
+        String eventName = in.nextLine();
+        Deletable deletableEvent = selectDeletableEvent(eventName);
         eventListForDay.remove(deletableEvent);
         deletableEventListForDay.remove(deletableEvent);
         if (editableEventListForDay.contains(deletableEvent)) {
             editableEventListForDay.remove(deletableEvent);
         }
         deletableEvent.deleteEvent(this, eventName);
+    }
+
+    public void editEvent() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Event Name: ");
+        String eventName = in.nextLine();
+        Editable editableEvent = selectEditableEvent(eventName);
+        //if (editableEvent instanceof MeetingEvent) {
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            editableEvent.edit(eventName, this.getDate(), startHour, endHour, description);
+        /*}
+        if (editableEvent instanceof DeadlineEvent) {
+            System.out.print("Event name: ");
+            String name = in.nextLine();
+            System.out.print("Start hour: ");
+            String startHour = in.nextLine();
+            System.out.print("End hour: ");
+            String endHour = in.nextLine();
+            System.out.print("Description: ");
+            String description = in.nextLine();
+            editableEvent.edit(name, date, startHour, endHour, description);
+        }*/
     }
 }
