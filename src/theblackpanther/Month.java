@@ -18,7 +18,6 @@ public class Month {
         setNumberOfDays(numberOfDays);
     }
 
-
     public boolean isThereEvent(Day currentDay){
         if(currentDay.getEventListForDay().size() != 0){
             return true;
@@ -34,41 +33,65 @@ public class Month {
 
         long daysSize = days.stream().count();
 
-        days.stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
-        System.out.println();
-        days.subList(7, 14).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
-        System.out.println();
-        days.subList(14, 21).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
-        System.out.println();
-        days.subList(21, 28).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
-        System.out.println();
-        days.subList(28, (int)daysSize).stream().limit(7).forEach(day -> System.out.printf("%3s", day + " "));
+        days.stream()
+                .limit(7)
+                .forEach(day -> System.out.printf("%3s", day.getDate() + " "));
         System.out.println();
 
+        days.subList(7, 14)
+                .stream()
+                .limit(7)
+                .forEach(day -> System.out.printf("%3s", day.getDate() + " "));
+        System.out.println();
 
-    /*    int counter = 0;
-        Day currentDay;
-        for(int i = 0; i < days.size(); i++){
-            currentDay = days.get(i);
-            if(isThereEvent(currentDay)){
-                eventDays.add(currentDay);
-            }
-            if(counter < 7) {
-                System.out.print(days.get(i) + " ");
-                counter++;
-            }else{
-                System.out.println();
-                counter = 0;
-            }
-        } */
+        days.subList(14, 21)
+                .stream()
+                .limit(7)
+                .forEach(day -> System.out.printf("%3s", day.getDate() + " "));
+        System.out.println();
+
+        days.subList(21, 28)
+                .stream()
+                .limit(7)
+                .forEach(day -> System.out.printf("%3s", day.getDate() + " "));
+        System.out.println();
+
+        days.subList(28, (int)daysSize)
+                .stream()
+                .limit(7)
+                .forEach(day -> System.out.printf("%3s", day.getDate() + " "));
+        System.out.println();
+
+//        int counter = 0;
+//        Day currentDay;
+//        for(int i = 0; i < days.size(); i++){
+//            currentDay = days.get(i);
+//            if(isThereEvent(currentDay)){
+//                eventDays.add(currentDay);
+//            }
+//            if(counter < 7) {
+//                System.out.print(days.get(i) + " ");
+//                counter++;
+//            }else{
+//                System.out.println();
+//                counter = 0;
+//            }
+//        }
     }
 
     public void displayAllDaysWithEvents(){
         List<Day> filtered = days.stream().filter(this::isThereEvent).collect(Collectors.toList());
         eventDays.addAll(filtered);
 
-        for(int i = 0; i < eventDays.size(); i++) {
-            System.out.println(eventDays.get(i) + " ");
+        for(int currentDay = 0; currentDay < eventDays.size(); currentDay++) {
+            System.out.println(eventDays.get(currentDay).getDayOfWeek() + "/DAY: " + eventDays.get(currentDay).getDate() + ":");
+            for(int currentEvent = 0; currentEvent < eventDays.get(currentDay).getEventListForDay().size(); currentEvent++){
+                System.out.println("Description of the event :\n" +
+                        eventDays.get(currentDay)
+                        .getEventListForDay()
+                        .get(currentEvent)
+                        .getDescription());
+            }
         }
     }
 
@@ -110,6 +133,7 @@ public class Month {
                 return dayInstance;
             }
         }
+
         //exception
         System.out.println("No such day in this month!");
         return null;
