@@ -4,12 +4,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner in=new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         CalendarApp calendar = new CalendarApp();
         System.out.println();
         String command="Menu";
 
+
         while(!command.equals("0")){
+            System.out.println();
+            System.out.println("---------------------------------------------");
+            System.out.println();
             System.out.println("Select activity:");
             System.out.println("1 - Add event");
             System.out.println("2 - Add note");
@@ -17,6 +21,10 @@ public class Main {
             System.out.println("4 - Display event");
             System.out.println("5 - Delete event");
             System.out.println("6 - Edit event");
+            System.out.println("7 - View calendar");
+            System.out.println("8 - View year by choice");
+            System.out.println("9 - View month by choice");
+            System.out.println("10 - View events in a month by choice");
             System.out.println("0 - Exit");
             command = in.nextLine();
             switch(command){
@@ -66,6 +74,18 @@ public class Main {
                 case "6":
                     day=calendar.chooseDay();
                     day.editEvent();
+                    break;
+                case "7":
+                    calendar.printCalendar();
+                    break;
+                case "8":
+                    calendar.printYear();
+                    break;
+                case "9":
+                    calendar.printMonth();
+                    break;
+                case "10":
+                    calendar.printAllDaysWithEventsInMonth();
                     break;
             }
         }

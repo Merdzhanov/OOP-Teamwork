@@ -9,6 +9,7 @@ public class DateNotInCalendarException extends IllegalArgumentException{
         super();
         this.code = code;
     }
+
     public DateNotInCalendarException(String message, Throwable cause, WrongDateElementType code) {
         super(message, cause);
         this.code = code;
@@ -18,7 +19,6 @@ public class DateNotInCalendarException extends IllegalArgumentException{
         super(message);
         this.code = code;
     }
-
 
     public DateNotInCalendarException(Throwable cause, WrongDateElementType code) {
         super(cause);
