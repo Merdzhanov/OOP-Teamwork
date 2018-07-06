@@ -38,6 +38,15 @@ public class Year {
         } */
     }
 
+    public MonthName getCurrentMonth(int choosenMonth){
+        for(int i = 0; i < months.size(); i++){
+            if(choosenMonth == i){
+                return months.get(i).getName();
+            }
+        }
+        return null;
+    }
+
     public String getYearNumber() {
         return yearNumber;
     }
