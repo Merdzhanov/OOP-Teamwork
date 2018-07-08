@@ -2,7 +2,7 @@ package theblackpanther;
 
 public class DeadlineEvent extends Event implements Editable {
 
-    public DeadlineEvent(String name, String date, String startHour, String endHour, String description) {
+    DeadlineEvent(String name, String date, String startHour, String endHour, String description) {
         super(name, date, startHour, endHour, description);
     }
 
