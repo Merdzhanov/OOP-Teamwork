@@ -29,12 +29,12 @@ public class MeetingEvent extends Event implements Editable, Deletable {
     }
 
     @Override
-    public void edit(String name, String date, String startHour, String endHour, String description) {
+    public void edit(String name, String date, String startHour, String endHour, String place) {
         super.setName(name);
         super.setDate(date);
         super.setStartHour(startHour);
         super.setEndHour(endHour);
-        super.setDescription(description);
+        setPlace(place);
     }
 
     @Override
