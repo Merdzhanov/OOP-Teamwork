@@ -176,6 +176,12 @@ public class Day {
         }
     }
 
+    public void displayAllNotes(){
+        this.getNotes()
+                .stream()
+                .forEach(ourNote -> System.out.println(ourNote.getNoteContent()));
+    }
+
     public Event selectEvent(String eventName) {
         for (Event event : eventListForDay) {
             if (eventName.equals(event.getName())) {
