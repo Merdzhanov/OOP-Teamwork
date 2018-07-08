@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class CalendarApp {
+class CalendarApp {
     private ArrayList<Year> calendarYears;
 
-    public CalendarApp() {
+    CalendarApp() {
         this.calendarYears = new ArrayList<>();
 
         for(int currentYear = 2018; currentYear <= 2022; currentYear++){
@@ -98,24 +98,44 @@ public class CalendarApp {
         }
     }
 
-    Day chooseDay() {
+    private Day findDay(String day, Month ourMonth) {
+        try {
+            return ourMonth.returnDay(day);
+        } catch (DateNotInCalendarException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private Day chooseDay(Month ourMonth) {
+
         Scanner in = new Scanner(System.in);
-        System.out.print("Year: ");
-        String year = in.nextLine();
-        System.out.print("Month: ");
-        String month = in.nextLine();
-        System.out.print("Day: ");
+
+        System.out.print("Choose Day: ");
         String dayString = in.nextLine();
-        return findDay(dayString, month, year);
+
+        return findDay(dayString, ourMonth);
     }
 
-    private Year chooseYear() {
+
+    private Month findMonth(String month, Year year) {
+
+        try {
+            return year.returnMonth(month);
+        } catch (DateNotInCalendarException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private Month chooseMonth(Year year){
         Scanner in = new Scanner(System.in);
-        System.out.println("Choose Year:");
-        String chosenYearNumber = in.nextLine();
+        System.out.print("Choose Month: ");
+        String month = in.nextLine();
 
-        return findYear(chosenYearNumber);
+        return findMonth(month, year);
     }
+
 
     private Year findYear(String year) {
         try {
@@ -126,15 +146,21 @@ public class CalendarApp {
         return null;
     }
 
-    private Day findDay(String day, String month, String year) {
-        try {
-            Year yearInstance = returnYear(year);
-            Month monthInstance = yearInstance.returnMonth(month);
-            return monthInstance.returnDay(day);
-        } catch (DateNotInCalendarException e) {
-            e.printStackTrace();
-        }
-        return null;
+    private Year chooseYear() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Choose Year: ");
+        String chosenYearNumber = in.nextLine();
+
+        return findYear(chosenYearNumber);
+    }
+
+    Day selectDate(){
+
+        Year ourYear = chooseYear();
+        Month ourMonth = chooseMonth(ourYear);
+        Day ourDay = chooseDay(ourMonth);
+
+        return ourDay;
     }
 
     private Year returnYear(String yearNumber){
@@ -150,19 +176,13 @@ public class CalendarApp {
     }
 
     void printCalendar(){
-        for(int currentYear = 0; currentYear <= 4; currentYear++){
-            System.out.println("-----------------------------------------");
-            String yearNumber = calendarYears.get(currentYear).getYearNumber();
-            System.out.println("YEAR : " + yearNumber);
-            for(int currentMonth = 0 ; currentMonth <= 11; currentMonth++){
-                MonthName monthName= calendarYears.get(currentYear).getCurrentMonth(currentMonth);
-                System.out.println("MONTH : " + monthName);
-                calendarYears.get(currentYear)
-                        .getMonths()
-                        .get(currentMonth)
-                        .displayAllDays();
-            }
+
+        for(Year ourYear : calendarYears){
+            System.out.println("---------------------------------------\n");
+            System.out.println("YEAR : " + ourYear.getYearNumber());
+            ourYear.displayAllMonths();
         }
+
     }
 
     void printYear(){
@@ -172,107 +192,48 @@ public class CalendarApp {
 
         System.out.println("YEAR : " + ourYearNumber);
 
-        for(int currentYear = 0; currentYear <= 4; currentYear++){
-            String yearNumber = calendarYears.get(currentYear).getYearNumber();
-            if(ourYearNumber.equals(yearNumber)){
-                for(int currentMonth = 0 ; currentMonth <= 11; currentMonth++){
-                    MonthName monthName = calendarYears.get(currentYear).getCurrentMonth(currentMonth);
-                    System.out.println("MONTH : " + monthName);
-                    calendarYears.get(currentYear)
-                            .getMonths()
-                            .get(currentMonth)
-                            .displayAllDays();
-                }
-            }
-        }
+        ourYear.displayAllMonths();
     }
 
-    public void printMonth(){
-        System.out.println("Choose Year:");
+    void printMonth(){
 
-        String chosenYearNumber = input.nextLine();
+        Year ourYear = chooseYear();
+        Month ourMonth = chooseMonth(ourYear);
 
-        System.out.println("Choose Month:");
+        System.out.println("YEAR : " + ourYear.getYearNumber());
+        System.out.println("MONTH : " + ourMonth.getName());
 
-        String chosenMonth =  input.nextLine();
+        ourMonth.displayAllDays();
 
-        for(int currentYear = 0; currentYear <= 4; currentYear++){
-            String yearNumber = calendarYears.get(currentYear).getYearNumber();
-            if(chosenYearNumber.equals(yearNumber)){
-                for(int currentMonth = 0 ; currentMonth <= 11; currentMonth++){
-                    MonthName monthName = calendarYears.get(currentYear).getCurrentMonth(currentMonth);
-                    if(chosenMonth.equals(monthName.toString())) {
-                        System.out.println("YEAR : " + chosenYearNumber);
-                        System.out.println("MONTH : " + monthName);
-                        calendarYears.get(currentYear)
-                                .getMonths()
-                                .get(currentMonth)
-                                .displayAllDays();
-                    }
-                }
-            }
-        }
     }
 
-    public void printAllDaysWithEventsInMonth(){
-        System.out.println("Choose Year:");
 
-        String chosenYearNumber = input.nextLine();
+    void printAllDaysWithNotesInDay(){
 
-        System.out.println("Choose Month:");
+        Year ourYear = chooseYear();
+        Month ourMonth = chooseMonth(ourYear);
+        Day ourDay = chooseDay(ourMonth);
 
-        String chosenMonth =  input.nextLine();
+        System.out.println("---------------------------------------\n");
+        System.out.println("YEAR : " + ourYear.getYearNumber());
+        System.out.println("MONTH : " + ourMonth.getName());
+        System.out.println("DAY : " + ourDay.getDate());
 
-        for(int currentYear = 0; currentYear <= 4; currentYear++){
-            String yearNumber = calendarYears.get(currentYear).getYearNumber();
-            if(chosenYearNumber.equals(yearNumber)){
-                for(int currentMonth = 0 ; currentMonth <= 11; currentMonth++){
-                    MonthName monthName = calendarYears.get(currentYear).getCurrentMonth(currentMonth);
-                    if(chosenMonth.equals(monthName.toString())) {
-                        System.out.println("YEAR : " + chosenYearNumber);
-                        System.out.println("MONTH : " + monthName);
-                        calendarYears.get(currentYear)
-                                .getMonths()
-                                .get(currentMonth)
-                                .displayAllDaysWithEvents();
-                    }
-                }
-            }
-        }
+        ourDay.displayAllNotes();
     }
 
-    public void printAllDaysWithNotesInDay(){
-        System.out.println("Choose Year:");
+    void printAllDaysWithEventsInMonth(){
 
-        String chosenYearNumber = input.nextLine();
+        Year ourYear = chooseYear();
+        Month ourMonth = chooseMonth(ourYear);
 
-        System.out.println("Choose Month:");
+        System.out.println("YEAR : " + ourYear.getYearNumber());
+        System.out.println("MONTH : " + ourMonth.getName());
 
-        String chosenMonth =  input.nextLine();
+        ourMonth.displayAllDaysWithEvents();
 
-        System.out.println("Choose Day:");
-
-        String chosenDay =  input.nextLine();
-
-        for(int currentYear = 0; currentYear <= 4; currentYear++){
-            String yearNumber = calendarYears.get(currentYear).getYearNumber();
-            if(chosenYearNumber.equals(yearNumber)){
-                for(int currentMonth = 0 ; currentMonth <= 11; currentMonth++){
-                    MonthName monthName = calendarYears.get(currentYear).getCurrentMonth(currentMonth);
-                    if(chosenMonth.equals(monthName.toString())) {
-                        System.out.println("YEAR : " + chosenYearNumber);
-                        System.out.println("MONTH : " + monthName);
-                        System.out.println("DAY : " + chosenDay);
-                        calendarYears.get(currentYear)
-                                .getMonths()
-                                .get(currentMonth)
-                                .returnDay(chosenDay)
-                                .displayAllNotes();
-                    }
-                }
-            }
-        }
     }
+
 
 }
 
