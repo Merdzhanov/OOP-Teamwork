@@ -1,5 +1,5 @@
 package theblackpanther;
 
 public enum WrongDateElementType {
-    WRONG_YEAR, WRONG_MONTH, WRONG_DATE
+    WRONG_YEAR, WRONG_MONTH, WRONG_DAY
 }
