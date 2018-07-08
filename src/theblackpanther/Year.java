@@ -69,7 +69,7 @@ public class Year {
                 return monthInstance;
             }
         }
-        System.out.println("Wrong month name!");
-        return null;
+        throw new DateNotInCalendarException("No such month in this calendar! " +
+                "(please type in the right format: example \"JANUARY\")", WrongDateElementType.WRONG_MONTH);
     }
 }
