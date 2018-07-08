@@ -203,9 +203,15 @@ public class Day {
         String startHour = in.nextLine();
         System.out.print("End hour: ");
         String endHour = in.nextLine();
-        System.out.print("Description: ");
-        String description = in.nextLine();
-        editableEvent.edit(eventName, this.getDate(), startHour, endHour, description);
+
+        if (editableEvent instanceof DeadlineEvent) {
+            System.out.print("Description: ");
+        } else {
+            System.out.println("Place: ");
+        }
+
+        String descriptionOrPlace = in.nextLine();
+        editableEvent.edit(eventName, this.getDate(), startHour, endHour, descriptionOrPlace);
     }
 
     Event selectEvent(String eventName) {
