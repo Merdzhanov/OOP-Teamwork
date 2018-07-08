@@ -4,7 +4,7 @@ public class DateNotInCalendarException extends IllegalArgumentException{
 
     private final WrongDateElementType code;
 
-    public DateNotInCalendarException(String message, WrongDateElementType code) {
+    DateNotInCalendarException(String message, WrongDateElementType code) {
         super(message);
         this.code = code;
     }
