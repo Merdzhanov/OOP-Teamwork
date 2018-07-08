@@ -264,4 +264,9 @@ public class Day {
     private void setDeletableEventListForDay() {
         this.deletableEventListForDay = new ArrayList<>();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
