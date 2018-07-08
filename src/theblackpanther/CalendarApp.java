@@ -72,7 +72,7 @@ class CalendarApp {
                         ourMonthNumber = 12;
                         break;
                 }
-                Month ourCurrentMonth = new Month(ourMonth, numberOfDays);
+                Month ourCurrentMonth = new Month(ourMonth);
 
                 ourYear.addMonthIntoYear(ourCurrentMonth);
 
