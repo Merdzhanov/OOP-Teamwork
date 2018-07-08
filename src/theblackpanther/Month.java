@@ -134,8 +134,7 @@ public class Month {
             }
         }
 
-        //exception
-        System.out.println("No such day in this month!");
-        return null;
+        throw new DateNotInCalendarException("No such day in this calendar! " +
+                "(please type in the right format: example \"1\")", WrongDateElementType.WRONG_DAY);
     }
 }
