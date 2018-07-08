@@ -1,17 +1,17 @@
 package theblackpanther;
 
-public class Note {
+class Note {
     private String noteContent;
 
-    public Note(String noteContent) {
+    Note(String noteContent) {
         setNoteContent(noteContent);
     }
 
-    public String getNoteContent() {
+    String getNoteContent() {
         return noteContent;
     }
 
-    public void setNoteContent(String noteContent) {
+    private void setNoteContent(String noteContent) {
         this.noteContent = noteContent;
     }
 }
