@@ -9,7 +9,6 @@ public class Main {
         System.out.println();
         String command="Menu";
 
-
         while(!command.equals("0")){
             System.out.println();
             System.out.println("---------------------------------------------");
@@ -24,7 +23,8 @@ public class Main {
             System.out.println("7 - View calendar");
             System.out.println("8 - View year by choice");
             System.out.println("9 - View month by choice");
-            System.out.println("10 - View events in a month by choice");
+            System.out.println("10 - View notes in a day by choice");
+            System.out.println("11 - View events in a month by choice");
             System.out.println("0 - Exit");
             command = in.nextLine();
             switch(command){
@@ -63,8 +63,8 @@ public class Main {
                 case "4":
                     day=calendar.chooseDay();
                     System.out.print("Event Name: ");
-                    String  eventName=in.nextLine();
-                    Event event= day.selectEvent(eventName);
+                    String eventName = in.nextLine();
+                    Event event = day.selectEvent(eventName);
                     event.displayEvent();
                     break;
                 case "5":
@@ -85,6 +85,9 @@ public class Main {
                     calendar.printMonth();
                     break;
                 case "10":
+                    calendar.printAllDaysWithNotesInDay();
+                    break;
+                case "11":
                     calendar.printAllDaysWithEventsInMonth();
                     break;
             }
