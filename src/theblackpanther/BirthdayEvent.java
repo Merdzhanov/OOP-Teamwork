@@ -29,19 +29,19 @@ public class BirthdayEvent extends Event {
         this.place = place;
     }
 
-    public String getNameOfBirthdayPerson() {
+    private String getNameOfBirthdayPerson() {
         return nameOfBirthdayPerson;
     }
 
-    public void setNameOfBirthdayPerson(String nameOfBirthdayPerson) {
+    private void setNameOfBirthdayPerson(String nameOfBirthdayPerson) {
         this.nameOfBirthdayPerson = nameOfBirthdayPerson;
     }
 
-    public String getGift() {
+    private String getGift() {
         return gift;
     }
 
-    public void setGift(String gift) {
+    private void setGift(String gift) {
         this.gift = gift;
     }
 
