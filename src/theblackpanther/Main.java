@@ -30,49 +30,55 @@ public class Main {
             switch(command){
                 case "0": break;
                 case "1":
-                    Day day=calendar.chooseDay();
+                    Day day = calendar.selectDate();
+                    System.out.println("Choose one of the following: " +
+                            "Meeting / " +
+                            "Sport / " +
+                            "Birthday / " +
+                            "Deadline / " +
+                            "Vacation");
                     System.out.print("Event type: ");
                     String eventType=in.nextLine();
                     switch(eventType) {
-                        case "Meeting Event":
+                        case "Meeting":
                             day.createNewMeeting();
                             break;
-                        case "Sport Event":
+                        case "Sport":
                             day.createNewSportEvent();
                             break;
-                        case "Birthday Event":
+                        case "Birthday":
                             day.createNewBirthdayEvent();
                             break;
-                        case "Deadline Event":
+                        case "Deadline":
                             day.createNewDeadlineEvent();
                             break;
-                        case "Vacation Event":
+                        case "Vacation":
                             day.createNewVacationEvent();
                             break;
                     }break;
                 case "2":{
-                    day=calendar.chooseDay();
+                    day = calendar.selectDate();
                     day.createNote();
                     break;
                 }
                 case "3":{
-                    day=calendar.chooseDay();
+                    day = calendar.selectDate();
                     day.displayAllEvents();
                     break;
                 }
                 case "4":
-                    day=calendar.chooseDay();
+                    day = calendar.selectDate();
                     System.out.print("Event Name: ");
                     String eventName = in.nextLine();
                     Event event = day.selectEvent(eventName);
                     event.displayEvent();
                     break;
                 case "5":
-                    day=calendar.chooseDay();
+                    day = calendar.selectDate();
                     day.deleteEvent();
                     break;
                 case "6":
-                    day=calendar.chooseDay();
+                    day = calendar.selectDate();
                     day.editEvent();
                     break;
                 case "7":
