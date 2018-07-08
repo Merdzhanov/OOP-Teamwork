@@ -27,11 +27,6 @@ public class SportEvent extends Event implements Deletable{
     @Override
     public void deleteEvent(Day day, String nameOfEvent) {
 
-        day.getEventListForDay()
-                .stream()
-                .filter(currentEvent -> currentEvent.getName().equals(nameOfEvent))
-                .forEach(day.getEventListForDay() :: remove);
-
     }
 
     private String getPlace() {
