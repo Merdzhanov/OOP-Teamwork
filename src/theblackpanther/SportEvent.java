@@ -7,8 +7,8 @@ public class SportEvent extends Event implements Deletable{
     private String firstCompetitor;
     private String secondCompetitor;
 
-    public SportEvent(String name, String date, String startHour, String endHour, String description, String place,
-                      SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
+    SportEvent(String name, String date, String startHour, String endHour, String description, String place,
+               SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
         super(name, date, startHour, endHour, description);
         setPlace(place);
         setTypeOfSport(typeOfSport);
@@ -26,55 +26,43 @@ public class SportEvent extends Event implements Deletable{
 
     @Override
     public void deleteEvent(Day day, String nameOfEvent) {
-        int numberOfEvents = day.getEventListForDay().size();
-        for(int i = 0; i < numberOfEvents; i++){
-            Event currentEvent = day.getEventListForDay().get(i);
-            if(nameOfEvent.equals(currentEvent.getName())){
-                day.getEventListForDay().remove(i);
-            }
-        }
 
-
-        //remake method using Streaming API
-
-//        day.getEventListForDay()
-//                .stream()
-//                .filter(currentEvent -> currentEvent.getName().equals(nameOfEvent))
-//                .forEach(day.getEventListForDay() :: remove);
+        day.getEventListForDay()
+                .stream()
+                .filter(currentEvent -> currentEvent.getName().equals(nameOfEvent))
+                .forEach(day.getEventListForDay() :: remove);
 
     }
 
-
-
-    public String getPlace() {
+    private String getPlace() {
         return place;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    public SportType getTypeOfSport() {
+    private SportType getTypeOfSport() {
         return typeOfSport;
     }
 
-    public void setTypeOfSport(SportType typeOfSport) {
-        this.typeOfSport = typeOfSport;
+    private void setPlace(String place) {
+        this.place = place;
     }
 
-    public String getFirstCompetitor() {
+    private String getFirstCompetitor() {
         return firstCompetitor;
     }
 
-    public void setFirstCompetitor(String firstCompetitor) {
-        this.firstCompetitor = firstCompetitor;
-    }
-
-    public String getSecondCompetitor() {
+    private String getSecondCompetitor() {
         return secondCompetitor;
     }
 
-    public void setSecondCompetitor(String secondCompetitor) {
+    private void setTypeOfSport(SportType typeOfSport) {
+        this.typeOfSport = typeOfSport;
+    }
+
+    private void setFirstCompetitor(String firstCompetitor) {
+        this.firstCompetitor = firstCompetitor;
+    }
+
+    private void setSecondCompetitor(String secondCompetitor) {
         this.secondCompetitor = secondCompetitor;
     }
 }
