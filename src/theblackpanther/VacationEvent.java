@@ -8,7 +8,7 @@ public class VacationEvent extends Event implements Deletable {
     private List<String> participants;
     private VacationType vacationType;
 
-    public VacationEvent(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
+    VacationEvent(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
         super(name, date, startHour, endHour, description);
         setPlace(place);
         setParticipants();
@@ -27,32 +27,27 @@ public class VacationEvent extends Event implements Deletable {
 
     }
 
-    void addParticipant(String participant){
-        participants.add(participant);
-    }
-
-
-    public String getPlace() {
+    private String getPlace() {
         return place;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    public List<String> getParticipants() {
+    private List<String> getParticipants() {
         return participants;
     }
 
-    public void setParticipants() {
-        this.participants = new ArrayList<>();
-    }
-
-    public VacationType getVacationType() {
+    private VacationType getVacationType() {
         return vacationType;
     }
 
-    public void setVacationType(VacationType vacationType) {
+    private void setPlace(String place) {
+        this.place = place;
+    }
+
+    private void setParticipants() {
+        this.participants = new ArrayList<>();
+    }
+
+    private void setVacationType(VacationType vacationType) {
         this.vacationType = vacationType;
     }
 
