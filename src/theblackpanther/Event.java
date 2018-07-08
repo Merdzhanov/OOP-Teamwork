@@ -10,7 +10,7 @@ public abstract class Event {
     private String endHour;
     private String description;
 
-    public Event(String name, String date, String startHour, String endHour, String description) {
+    Event(String name, String date, String startHour, String endHour, String description) {
         setName(name);
         setDate(date);
         setStartHour(startHour);
@@ -44,36 +44,36 @@ public abstract class Event {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDate() {
         return date;
+    }
+
+    String getStartHour() {
+        return startHour;
+    }
+
+    String getEndHour() {
+        return endHour;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
 
-    public String getStartHour() {
-        return startHour;
-    }
-
-    public void setStartHour(String startHour) {
+    void setStartHour(String startHour) {
         this.startHour = startHour;
     }
 
-    public String getEndHour() {
-        return endHour;
-    }
-
-    public void setEndHour(String endHour) {
+    void setEndHour(String endHour) {
         this.endHour = endHour;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
