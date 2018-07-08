@@ -1,7 +1,5 @@
 package theblackpanther;
 
-import theblackpanther.*;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -87,8 +85,8 @@ public class CalendarApp {
                         dt1=format1.parse(date);
                     }
                     catch (Exception e) {
-                        System.out.println(e);
-                    }
+                        e.printStackTrace();
+                       }
                     DateFormat format2 = new SimpleDateFormat("EEEE");
                     String finalDay = format2.format(dt1);
 
@@ -100,7 +98,58 @@ public class CalendarApp {
         }
     }
 
-    public void printCalendar(){
+    Day chooseDay() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Year: ");
+        String year = in.nextLine();
+        System.out.print("Month: ");
+        String month = in.nextLine();
+        System.out.print("Day: ");
+        String dayString = in.nextLine();
+        return findDay(dayString, month, year);
+    }
+
+    private Year chooseYear() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Choose Year:");
+        String chosenYearNumber = in.nextLine();
+
+        return findYear(chosenYearNumber);
+    }
+
+    private Year findYear(String year) {
+        try {
+            return returnYear(year);
+        } catch (DateNotInCalendarException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private Day findDay(String day, String month, String year) {
+        try {
+            Year yearInstance = returnYear(year);
+            Month monthInstance = yearInstance.returnMonth(month);
+            return monthInstance.returnDay(day);
+        } catch (DateNotInCalendarException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private Year returnYear(String yearNumber){
+
+        for (Year currentYear : this.calendarYears) {
+            if (currentYear.getYearNumber().equals(yearNumber)) {
+                return currentYear;
+            }
+        }
+        throw new DateNotInCalendarException("No such year in this calendar!" +
+                "(please choose one of the following years (2018, 2019, 2020, 2021, 2022))"
+                , WrongDateElementType.WRONG_YEAR);
+    }
+
+    void printCalendar(){
         for(int currentYear = 0; currentYear <= 4; currentYear++){
             System.out.println("-----------------------------------------");
             String yearNumber = calendarYears.get(currentYear).getYearNumber();
@@ -116,18 +165,16 @@ public class CalendarApp {
         }
     }
 
-    Scanner input = new Scanner(System.in);
+    void printYear(){
 
-    public void printYear(){
-        System.out.println("Choose Year:");
+        Year ourYear = chooseYear();
+        String ourYearNumber = ourYear.getYearNumber();
 
-        String chosenYearNumber = input.nextLine();
-
-        System.out.println("YEAR : " + chosenYearNumber);
+        System.out.println("YEAR : " + ourYearNumber);
 
         for(int currentYear = 0; currentYear <= 4; currentYear++){
             String yearNumber = calendarYears.get(currentYear).getYearNumber();
-            if(chosenYearNumber.equals(yearNumber)){
+            if(ourYearNumber.equals(yearNumber)){
                 for(int currentMonth = 0 ; currentMonth <= 11; currentMonth++){
                     MonthName monthName = calendarYears.get(currentYear).getCurrentMonth(currentMonth);
                     System.out.println("MONTH : " + monthName);
@@ -139,6 +186,7 @@ public class CalendarApp {
             }
         }
     }
+
     public void printMonth(){
         System.out.println("Choose Year:");
 
@@ -224,43 +272,6 @@ public class CalendarApp {
                 }
             }
         }
-    }
-
-    public Day chooseDay() {
-        Scanner in = new Scanner(System.in);
-        //System.out.print("Event name: ");
-        System.out.print("Year: ");
-        String year = in.nextLine();
-        System.out.print("Month: ");
-        String month = in.nextLine();
-        System.out.print("Day: ");
-        String dayString = in.nextLine();
-        Day day = this.findDay(dayString, month, year);
-        return day;
-    }
-
-    public Day findDay(String day, String month, String year) {
-        try {
-            Year yearInstance = returnYear(year);
-            Month monthInstance = yearInstance.returnMonth(month);
-            Day dayInstance = monthInstance.returnDay(day);
-            return dayInstance;
-        } catch (DateNotInCalendarException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public Year returnYear(String yearNumber){
-
-        for (Year currentYear : this.calendarYears) {
-            if (currentYear.getYearNumber().equals(yearNumber)) {
-                return currentYear;
-            }
-        }
-        throw new DateNotInCalendarException("No such year in this calendar!" +
-                "(please choose one of the following years (2018, 2019, 2020, 2021, 2022))"
-                , WrongDateElementType.WRONG_YEAR);
     }
 
 }
