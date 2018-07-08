@@ -13,7 +13,7 @@ public class Day {
     private ArrayList<Note> notes;
 
     //Constructor
-    public Day(String dayOfWeek, String date) {
+    Day(String dayOfWeek, String date) {
         setDayOfWeek(dayOfWeek);
         setDate(date);
         setEventListForDay();
@@ -22,51 +22,7 @@ public class Day {
         setNotes();
     }
 
-    //Getters
-    public String getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public List<Event> getEventListForDay() {
-        return eventListForDay;
-    }
-
-    public ArrayList<Note> getNotes() {
-        return notes;
-    }
-
-    //Setters
-    private void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
-    private void setDate(String date) {
-        this.date = date;
-    }
-
-    private void setEventListForDay() {
-        this.eventListForDay = new ArrayList<>();
-    }
-
-    public void setNotes() {
-        this.notes = new ArrayList<>();
-    }
-
-    public void setEditableEventListForDay() {
-        this.editableEventListForDay = new ArrayList<>();
-    }
-
-    public void setDeletableEventListForDay() {
-        this.deletableEventListForDay = new ArrayList<>();
-    }
-
-    //Methods
-    //public void createNewMeeting(String name, String date, String startHour, String endHour, String description, String place) {
-    public void createNewMeeting() {
+    void createNewMeeting() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event name: ");
         String name = in.nextLine();
@@ -84,8 +40,7 @@ public class Day {
         deletableEventListForDay.add(meeting);
     }
 
-    //public void createNewDeadline(String name, String date, String startHour, String endHour, String description) {
-    public void createNewDeadlineEvent() {
+    void createNewDeadlineEvent() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event name: ");
         String name = in.nextLine();
@@ -100,8 +55,7 @@ public class Day {
         editableEventListForDay.add(deadline);
     }
 
-    //public void createNewVacation(String name, String date, String startHour, String endHour, String description, String place, VacationType vacationType) {
-    public void createNewVacationEvent() {
+    void createNewVacationEvent() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event name: ");
         String name = in.nextLine();
@@ -113,6 +67,12 @@ public class Day {
         String description = in.nextLine();
         System.out.print("Place: ");
         String place = in.nextLine();
+        System.out.println("Choose one of the following: " +
+                "SUMMER_HOLIDAY / " +
+                "SKI_TRIP / " +
+                "COUNTRYSIDE / " +
+                "FAMILY_HOLIDAY / " +
+                "LADS_ON_TOUR");
         System.out.print("Vacation Type: ");
         String vacationType = in.nextLine();
         VacationEvent vacation = new VacationEvent(name, date, startHour, endHour, description, place, VacationType.valueOf(vacationType));
@@ -120,8 +80,7 @@ public class Day {
         deletableEventListForDay.add(vacation);
     }
 
-    //public void createNewSportEvent(String name, String date, String startHour, String endHour, String description, String place, SportType typeOfSport, String firstCompetitor, String secondCompetitor) {
-    public void createNewSportEvent() {
+    void createNewSportEvent() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event name: ");
         String name = in.nextLine();
@@ -133,6 +92,12 @@ public class Day {
         String description = in.nextLine();
         System.out.print("Place: ");
         String place = in.nextLine();
+        System.out.println("Choose one of the following: " +
+                "VOLLEYBALL / " +
+                "BASKETBALL / " +
+                "BOXING / " +
+                "TENNIS / " +
+                "RUNNING");
         System.out.print("Type of sport: ");
         String typeOfSport = in.nextLine();
         System.out.print("First Competitor: ");
@@ -144,8 +109,7 @@ public class Day {
         deletableEventListForDay.add(sport);
     }
 
-    //public void createNewBirthday(String name, String date, String startHour, String endHour, String description, String place, String nameOfBirthdayPerson, String gift) {
-    public void createNewBirthdayEvent() {
+    void createNewBirthdayEvent() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event name: ");
         String name = in.nextLine();
@@ -165,33 +129,15 @@ public class Day {
         eventListForDay.add(birthday);
     }
 
-    public void displayAllEvents() {
-        for (Event event : eventListForDay) {
-            System.out.println("Event Name: " + event.getName());
-            System.out.println("Event Date: " + event.getDate());
-            System.out.println("Event Start Time: " + event.getStartHour());
-            System.out.println("Event End Time: " + event.getEndHour());
-            System.out.println("Event Description: " + event.getDescription());
-            System.out.println();
-        }
+    void createNote() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Type your text: ");
+        String noteContent = in.nextLine();
+        Note newNote = new Note(noteContent);
+        notes.add(newNote);
     }
 
-    public void displayAllNotes(){
-        this.getNotes()
-                .stream()
-                .forEach(ourNote -> System.out.println(ourNote.getNoteContent()));
-    }
-
-    public Event selectEvent(String eventName) {
-        for (Event event : eventListForDay) {
-            if (eventName.equals(event.getName())) {
-                return event;
-            }
-        }
-        return null;
-    }
-
-    public Editable selectEditableEvent(String eventName) {
+    private Editable selectEditableEvent(String eventName) {
         for (Editable event : editableEventListForDay) {
             Event castedAsEvent = (Event) event;
             if (eventName.equals(castedAsEvent.getName())) {
@@ -201,7 +147,7 @@ public class Day {
         return null;
     }
 
-    public Deletable selectDeletableEvent(String eventName) {
+    private Deletable selectDeletableEvent(String eventName) {
         for (Deletable event : deletableEventListForDay) {
             Event castedAsEvent = (Event) event;
             if (eventName.equals(castedAsEvent.getName())) {
@@ -211,34 +157,48 @@ public class Day {
         return null;
     }
 
-    //public void createNote(String noteContent){
-    public void createNote() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Type your text: ");
-        String noteContent = in.nextLine();
-        Note newNote = new Note(noteContent);
-        notes.add(newNote);
+    void displayAllEvents() {
+        for (Event event : eventListForDay) {
+            System.out.println("---------------------------------------------\n");
+            System.out.println("Event Name: " + event.getName());
+            System.out.println("Event Date: " + event.getDate());
+            System.out.println("Event Start Time: " + event.getStartHour());
+            System.out.println("Event End Time: " + event.getEndHour());
+            System.out.println("Event Description: " + event.getDescription());
+            System.out.println();
+        }
     }
 
-    public void deleteEvent() {
+    void displayAllNotes(){
+        this.getNotes()
+                .stream()
+                .forEach(ourNote -> System.out.println("NOTE: " + ourNote.getNoteContent()));
+    }
+
+    void deleteEvent() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event Name: ");
         String eventName = in.nextLine();
         Deletable deletableEvent = selectDeletableEvent(eventName);
-        eventListForDay.remove(deletableEvent);
-        deletableEventListForDay.remove(deletableEvent);
-        if (editableEventListForDay.contains(deletableEvent)) {
-            editableEventListForDay.remove(deletableEvent);
-        }
+        if(deletableEvent != null){
+            eventListForDay.remove(deletableEvent);
+
+            deletableEventListForDay.remove(deletableEvent);
+
+            if (editableEventListForDay.contains(deletableEvent)) {
+                editableEventListForDay.remove(deletableEvent);
+            }
         deletableEvent.deleteEvent(this, eventName);
+        }else{
+            System.out.println("CANNOT BE DELETED!!!");
+        }
     }
 
-    public void editEvent() {
+    void editEvent() {
         Scanner in = new Scanner(System.in);
         System.out.print("Event Name: ");
         String eventName = in.nextLine();
         Editable editableEvent = selectEditableEvent(eventName);
-        //if (editableEvent instanceof MeetingEvent) {
         System.out.print("Start hour: ");
         String startHour = in.nextLine();
         System.out.print("End hour: ");
@@ -246,17 +206,56 @@ public class Day {
         System.out.print("Description: ");
         String description = in.nextLine();
         editableEvent.edit(eventName, this.getDate(), startHour, endHour, description);
-        /*}
-        if (editableEvent instanceof DeadlineEvent) {
-            System.out.print("Event name: ");
-            String name = in.nextLine();
-            System.out.print("Start hour: ");
-            String startHour = in.nextLine();
-            System.out.print("End hour: ");
-            String endHour = in.nextLine();
-            System.out.print("Description: ");
-            String description = in.nextLine();
-            editableEvent.edit(name, date, startHour, endHour, description);
-        }*/
+    }
+
+    Event selectEvent(String eventName) {
+        for (Event event : eventListForDay) {
+            if (eventName.equals(event.getName())) {
+                return event;
+            }
+        }
+        return null;
+    }
+
+    //Getters
+    String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    List<Event> getEventListForDay() {
+        return eventListForDay;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    private ArrayList<Note> getNotes() {
+        return notes;
+    }
+
+    //Setters
+    private void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    private void setDate(String date) {
+        this.date = date;
+    }
+
+    private void setEventListForDay() {
+        this.eventListForDay = new ArrayList<>();
+    }
+
+    private void setNotes() {
+        this.notes = new ArrayList<>();
+    }
+
+    private void setEditableEventListForDay() {
+        this.editableEventListForDay = new ArrayList<>();
+    }
+
+    private void setDeletableEventListForDay() {
+        this.deletableEventListForDay = new ArrayList<>();
     }
 }
