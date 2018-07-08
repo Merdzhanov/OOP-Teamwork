@@ -1,8 +1,5 @@
 package theblackpanther;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public abstract class Event {
     private String name;
     private String date;
